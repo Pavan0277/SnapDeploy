@@ -90,21 +90,22 @@ const Layout = ({ setIsAuthenticated }) => {
                             {/* Theme Toggle */}
                             <button
                                 onClick={toggleTheme}
-                                className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105"
+                                className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 relative overflow-hidden group"
                             >
+                                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 {theme === "light" ? (
-                                    <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                                    <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
                                 ) : (
-                                    <Sun className="h-5 w-5 text-yellow-500" />
+                                    <Sun className="h-5 w-5 text-yellow-500 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
                                 )}
                             </button>
 
                             {/* Logout Button */}
                             <button
                                 onClick={handleLogout}
-                                className="btn-secondary p-2.5"
+                                className="btn-secondary p-2.5 hover:shadow-lg active:scale-95 group"
                             >
-                                <LogOut className="h-5 w-5" />
+                                <LogOut className="h-5 w-5 group-hover:-rotate-12 transition-transform duration-300" />
                                 <span className="hidden sm:inline-block ml-2">
                                     Logout
                                 </span>
@@ -129,7 +130,7 @@ const Layout = ({ setIsAuthenticated }) => {
                         <div className="p-4 flex justify-end">
                             <button
                                 onClick={() => setIsExpanded(!isExpanded)}
-                                className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hidden lg:block transition-all duration-300 p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
+                                className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hidden lg:block transition-all duration-300 p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110 active:scale-95"
                             >
                                 {isExpanded ? (
                                     <ChevronLeft size={20} />
@@ -144,19 +145,19 @@ const Layout = ({ setIsAuthenticated }) => {
                                     key={index}
                                     to={item.path}
                                     className={({ isActive }) => `
-                                        group w-full flex items-center px-4 py-4 mb-2 relative transition-all duration-300 rounded-xl
+                                        group w-full flex items-center px-4 py-4 mb-2 relative transition-all duration-300 rounded-xl hover:shadow-lg hover:-translate-y-0.5
                                         ${
                                             isActive
-                                                ? "bg-gradient-to-r from-primary-500/10 to-secondary-500/10 text-primary-600 dark:text-primary-400 border-l-4 border-primary-600"
+                                                ? "bg-gradient-to-r from-primary-500/10 to-secondary-500/10 text-primary-600 dark:text-primary-400 border-l-4 border-primary-600 shadow-lg"
                                                 : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
                                         }
                                     `}
                                 >
                                     <div
-                                        className={`relative transition-transform duration-300 group-hover:scale-110`}
+                                        className={`relative transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6`}
                                     >
                                         <item.icon size={20} />
-                                        <span className="absolute -top-1 -right-1 h-2 w-2 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                        <span className="absolute -top-1 -right-1 h-2 w-2 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg shadow-primary-500/50"></span>
                                     </div>
                                     {isExpanded ? (
                                         <span className="ml-4 font-medium">

@@ -180,24 +180,26 @@ const HomePage = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
                             <button
                                 onClick={() => navigate("/auth")}
-                                className="btn-primary px-8 py-4 text-lg font-semibold group"
+                                className="btn-primary px-8 py-4 text-lg font-semibold group relative overflow-hidden"
                             >
-                                Start Deploying Free
-                                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                <span className="relative z-10">Start Deploying Free</span>
+                                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-secondary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </button>
-                            <button className="btn-secondary px-8 py-4 text-lg font-semibold">
-                                Watch Demo
+                            <button className="btn-secondary px-8 py-4 text-lg font-semibold group">
+                                <span>Watch Demo</span>
+                                <Globe className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                             </button>
                         </div>
 
                         {/* Stats */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                             {stats.map((stat, index) => (
-                                <div key={index} className="text-center">
-                                    <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+                                <div key={index} className="stat-card group animate-slide-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
                                         {stat.number}
                                     </div>
-                                    <div className="text-gray-600 dark:text-gray-400 font-medium">
+                                    <div className="text-gray-600 dark:text-gray-400 font-medium text-sm uppercase tracking-wider">
                                         {stat.label}
                                     </div>
                                 </div>
@@ -231,16 +233,17 @@ const HomePage = () => {
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className="card p-8 hover:shadow-xl transition-all duration-300 group"
+                                className="feature-card group animate-fade-in-scale"
+                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 <div
-                                    className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                                    className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-xl`}
                                 >
                                     <div className="text-white">
                                         {feature.icon}
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                                     {feature.title}
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -265,40 +268,40 @@ const HomePage = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="step-card animate-fade-in-scale" style={{ animationDelay: '0.1s' }}>
+                            <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300">
                                 <Github className="w-10 h-10 text-white" />
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                 1. Connect Repository
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
+                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                 Connect your GitHub repository with one click.
                                 We support both public and private repos.
                             </p>
                         </div>
 
-                        <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="step-card animate-fade-in-scale" style={{ animationDelay: '0.2s' }}>
+                            <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300">
                                 <Code className="w-10 h-10 text-white" />
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                 2. Configure & Build
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
+                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                 We automatically detect your framework and
                                 configure the optimal build settings.
                             </p>
                         </div>
 
-                        <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="step-card animate-fade-in-scale" style={{ animationDelay: '0.3s' }}>
+                            <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300">
                                 <Rocket className="w-10 h-10 text-white" />
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                                 3. Deploy & Go Live
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
+                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                 Your app is deployed globally with SSL, CDN, and
                                 monitoring included automatically.
                             </p>
