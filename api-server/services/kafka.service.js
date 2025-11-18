@@ -9,14 +9,14 @@ dotenv.config({
     path: "./.env",
 });
 
-const pemPath = './kafka.pem';
+const pemPath = "./kafka.pem";
 fs.writeFileSync(pemPath, process.env.KAFKA_CERT);
 
 const kafka = new Kafka({
     clientId: `api-server`,
     brokers: [process.env.KAFKA_BROKER],
     ssl: {
-        ca: [readFileSync("./kafka.pem", "utf-8")],
+        rejectUnauthorized: false,
     },
     sasl: {
         mechanism: "plain",
