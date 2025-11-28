@@ -65,6 +65,9 @@ export default {
                 "bounce-gentle": "bounce-gentle 2s infinite",
                 "pulse-gentle": "pulse-gentle 2s infinite",
                 glow: "glow 2s ease-in-out infinite alternate",
+                shimmer: "shimmer 2s infinite",
+                "slide-in-up": "slide-in-up 0.6s ease-out forwards",
+                "fade-in-scale": "fade-in-scale 0.5s ease-out forwards",
             },
             keyframes: {
                 "bounce-gentle": {
@@ -78,6 +81,18 @@ export default {
                 glow: {
                     "0%": { boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)" },
                     "100%": { boxShadow: "0 0 30px rgba(139, 92, 246, 0.6)" },
+                },
+                shimmer: {
+                    "0%": { backgroundPosition: "-200% 0" },
+                    "100%": { backgroundPosition: "200% 0" },
+                },
+                "slide-in-up": {
+                    "0%": { opacity: "0", transform: "translateY(30px)" },
+                    "100%": { opacity: "1", transform: "translateY(0)" },
+                },
+                "fade-in-scale": {
+                    "0%": { opacity: "0", transform: "scale(0.95)" },
+                    "100%": { opacity: "1", transform: "scale(1)" },
                 },
             },
             backgroundImage: {

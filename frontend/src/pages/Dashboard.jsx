@@ -191,38 +191,39 @@ const Dashboard = () => {
                       Array.from({ length: 4 }).map((_, index) => (
                           <div key={index} className="card p-6 animate-pulse">
                               <div className="flex items-center justify-between mb-4">
-                                  <div className="w-12 h-12 bg-gray-300 dark:bg-gray-600 rounded-xl"></div>
+                                  <div className="w-12 h-12 bg-gray-300 dark:bg-gray-600 rounded-xl animate-shimmer"></div>
                               </div>
-                              <div className="space-y-2">
-                                  <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
-                                  <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-1/2"></div>
-                                  <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                              <div className="space-y-3">
+                                  <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4 animate-shimmer"></div>
+                                  <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-1/2 animate-shimmer"></div>
+                                  <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3 animate-shimmer"></div>
                               </div>
                           </div>
                       ))
                     : stats.map((stat, index) => (
                           <div
                               key={index}
-                              className="card p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                              className="card p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group animate-fade-in-scale"
+                              style={{ animationDelay: `${index * 0.1}s` }}
                           >
                               <div className="flex items-center justify-between mb-4">
                                   <div
-                                      className={`p-3 bg-${stat.color}-100 dark:bg-${stat.color}-900/20 rounded-xl`}
+                                      className={`p-3 bg-${stat.color}-100 dark:bg-${stat.color}-900/20 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg group-hover:shadow-xl`}
                                   >
                                       <stat.icon
-                                          className={`h-6 w-6 text-${stat.color}-600 dark:text-${stat.color}-400`}
+                                          className={`h-6 w-6 text-${stat.color}-600 dark:text-${stat.color}-400 group-hover:rotate-6 transition-transform duration-300`}
                                       />
                                   </div>
                               </div>
                               <div>
-                                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
+                                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1 uppercase tracking-wider">
                                       {stat.title}
                                   </p>
-                                  <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                                  <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                                       {stat.value}
                                   </p>
                                   <p
-                                      className={`text-sm ${
+                                      className={`text-sm font-medium ${
                                           stat.trend === "up"
                                               ? "text-green-600 dark:text-green-400"
                                               : stat.trend === "building"
@@ -260,19 +261,20 @@ const Dashboard = () => {
                         recentProjects.map((project, index) => (
                             <div
                                 key={index}
-                                className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors cursor-pointer"
+                                className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition-all duration-300 cursor-pointer group hover:shadow-lg hover:-translate-y-0.5 animate-slide-in-up"
+                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-2 bg-primary-100 dark:bg-primary-900/20 rounded-lg">
-                                        <Activity className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                                    <div className="p-2 bg-primary-100 dark:bg-primary-900/20 rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-md">
+                                        <Activity className="h-5 w-5 text-primary-600 dark:text-primary-400 group-hover:rotate-12 transition-transform duration-300" />
                                     </div>
                                     <div>
-                                        <h3 className="font-medium text-gray-900 dark:text-white">
+                                        <h3 className="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                                             {project.name}
                                         </h3>
                                         <div className="flex items-center gap-4 mt-1">
                                             <span
-                                                className={`text-xs px-2 py-1 rounded-full font-medium ${
+                                                className={`text-xs px-2 py-1 rounded-full font-medium transition-transform duration-300 group-hover:scale-105 ${
                                                     project.status === "Active"
                                                         ? "bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400"
                                                         : "bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400"

@@ -389,7 +389,7 @@ function Profile() {
                                             <div className="flex items-center gap-2">
                                                 {user.isGithubConnected ? (
                                                     <>
-                                                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                                                         <span className="text-green-600 dark:text-green-400 font-medium text-sm">
                                                             Connected
                                                         </span>
@@ -409,7 +409,7 @@ function Profile() {
                                                 Profile
                                             </span>
                                             <div className="flex items-center gap-2">
-                                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                                <div className="w-2 h-2 bg-green-500 rounded-full shadow-lg shadow-green-500/50"></div>
                                                 <span className="text-green-600 dark:text-green-400 font-medium text-sm">
                                                     Complete
                                                 </span>
@@ -456,7 +456,7 @@ function Profile() {
                                     {!isEditing ? (
                                         <button
                                             onClick={() => setIsEditing(true)}
-                                            className="flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl font-medium"
+                                            className="flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl font-medium hover:-translate-y-0.5 active:scale-95"
                                         >
                                             <Edit3 className="h-4 w-4" />
                                             Edit Profile
@@ -466,7 +466,7 @@ function Profile() {
                                             <button
                                                 onClick={handleUpdateDetails}
                                                 disabled={updating}
-                                                className="flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors disabled:opacity-50 shadow-lg font-medium"
+                                                className="flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 disabled:opacity-50 shadow-lg hover:shadow-xl font-medium hover:-translate-y-0.5 active:scale-95"
                                             >
                                                 {updating ? (
                                                     <Loader className="h-4 w-4 animate-spin" />
